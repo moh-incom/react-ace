@@ -249,9 +249,6 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
       this.editor.renderer.updateFontSize();
     }
 
-    if (this.props.navigateToFileEnd) {
-      this.editor.navigateFileEnd();
-    }
     this.editor.renderer.setShowGutter(showGutter);
     this.editor.getSession().setUseWrapMode(wrapEnabled);
     this.editor.setShowPrintMargin(showPrintMargin);
@@ -300,6 +297,10 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
     this.editor
       .getSession()
       .setValue(!defaultValue ? value || "" : defaultValue);
+    
+    if (this.props.navigateToFileEnd) {
+      this.editor.navigateFileEnd();
+    }
 
     if (Array.isArray(commands)) {
       commands.forEach(command => {
